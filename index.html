@@ -1,0 +1,584 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EventSphere - Event Management</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= LOGIN / REGISTER ================= -->
+
+    <section id="loginPage" class="login-page">
+
+        <div class="login-box">
+
+            <div class="logo">
+                <span>Event</span>Sphere
+            </div>
+
+            <p class="tagline">Your Event. Our Responsibility.</p>
+
+            <h2 id="formTitle">Welcome Back</h2>
+
+            <p id="formDescription">
+                Login to continue to EventSphere
+            </p>
+
+            <input
+                type="text"
+                id="username"
+                placeholder="Enter your name"
+            >
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter password"
+            >
+
+            <button onclick="loginUser()" class="main-button">
+                Login
+            </button>
+
+            <p id="message"></p>
+
+            <p class="switch-text">
+                Don't have an account?
+                <button onclick="showRegister()" class="link-button">
+                    Register
+                </button>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MAIN WEBSITE ================= -->
+
+    <div id="mainWebsite" class="hidden">
+
+        <!-- NAVBAR -->
+
+        <nav class="navbar">
+
+            <div class="nav-logo">
+                <span>Event</span>Sphere
+            </div>
+
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#events">Events</a>
+                <a href="#about">About</a>
+                <button onclick="logoutUser()" class="logout-button">
+                    Logout
+                </button>
+            </div>
+
+        </nav>
+
+
+        <!-- ================= HERO ================= -->
+
+        <section id="home" class="hero">
+
+            <div class="hero-content">
+
+                <p class="small-title">
+                    WELCOME TO EVENTSPHERE
+                </p>
+
+                <h1>
+                    We Make Your
+                    <span>Special Moments</span>
+                    Unforgettable
+                </h1>
+
+                <p>
+                    From birthdays and weddings to corporate celebrations,
+                    EventSphere helps you create memorable events with style.
+                </p>
+
+                <a href="#events" class="hero-button">
+                    Explore Events
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= EVENTS ================= -->
+
+        <section id="events" class="events-section">
+
+            <div class="section-heading">
+
+                <p>OUR SERVICES</p>
+
+                <h2>Choose Your Event</h2>
+
+                <span>
+                    Select an event and create your perfect celebration.
+                </span>
+
+            </div>
+
+
+            <div class="event-container">
+
+                <!-- EVENT 1 -->
+
+                <div class="event-card"
+                     onclick="selectEvent('Birthday Party')">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=800&q=80"
+                        alt="Birthday Party"
+                    >
+
+                    <div class="event-content">
+
+                        <h3>Birthday Party</h3>
+
+                        <p>
+                            Celebrate your special day with decorations,
+                            music and unforgettable moments.
+                        </p>
+
+                        <button>
+                            Book Now →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EVENT 2 -->
+
+                <div class="event-card"
+                     onclick="selectEvent('Marriage')">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80"
+                        alt="Marriage"
+                    >
+
+                    <div class="event-content">
+
+                        <h3>Marriage</h3>
+
+                        <p>
+                            Make your wedding celebration beautiful,
+                            elegant and memorable.
+                        </p>
+
+                        <button>
+                            Book Now →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EVENT 3 -->
+
+                <div class="event-card"
+                     onclick="selectEvent('Corporate Party')">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=80"
+                        alt="Corporate Party"
+                    >
+
+                    <div class="event-content">
+
+                        <h3>Corporate Party</h3>
+
+                        <p>
+                            Professional events designed for teams,
+                            companies and business celebrations.
+                        </p>
+
+                        <button>
+                            Book Now →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EVENT 4 -->
+
+                <div class="event-card"
+                     onclick="selectEvent('Anniversary')">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80"
+                        alt="Anniversary"
+                    >
+
+                    <div class="event-content">
+
+                        <h3>Anniversary</h3>
+
+                        <p>
+                            Celebrate your journey together with a
+                            beautiful anniversary event.
+                        </p>
+
+                        <button>
+                            Book Now →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EVENT 5 -->
+
+                <div class="event-card"
+                     onclick="selectEvent('Engagement')">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=800&q=80"
+                        alt="Engagement"
+                    >
+
+                    <div class="event-content">
+
+                        <h3>Engagement</h3>
+
+                        <p>
+                            Start your new journey with a stylish
+                            engagement celebration.
+                        </p>
+
+                        <button>
+                            Book Now →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EVENT 6 -->
+
+                <div class="event-card"
+                     onclick="selectEvent('Baby Shower')">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1484820540004-14229fe36ca4?auto=format&fit=crop&w=800&q=80"
+                        alt="Baby Shower"
+                    >
+
+                    <div class="event-content">
+
+                        <h3>Baby Shower</h3>
+
+                        <p>
+                            Celebrate the upcoming arrival with
+                            beautiful decorations and memories.
+                        </p>
+
+                        <button>
+                            Book Now →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EVENT 7 -->
+
+                <div class="event-card"
+                     onclick="selectEvent('Farewell Party')">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=800&q=80"
+                        alt="Farewell Party"
+                    >
+
+                    <div class="event-content">
+
+                        <h3>Farewell Party</h3>
+
+                        <p>
+                            Give someone a memorable farewell with
+                            a fun celebration.
+                        </p>
+
+                        <button>
+                            Book Now →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EVENT 8 -->
+
+                <div class="event-card"
+                     onclick="selectEvent('Festival Celebration')">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80"
+                        alt="Festival"
+                    >
+
+                    <div class="event-content">
+
+                        <h3>Festival Celebration</h3>
+
+                        <p>
+                            Celebrate festivals with amazing decorations,
+                            lights and entertainment.
+                        </p>
+
+                        <button>
+                            Book Now →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EVENT 9 -->
+
+                <div class="event-card"
+                     onclick="selectEvent('Private Party')">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80"
+                        alt="Private Party"
+                    >
+
+                    <div class="event-content">
+
+                        <h3>Private Party</h3>
+
+                        <p>
+                            Enjoy a private celebration designed
+                            according to your requirements.
+                        </p>
+
+                        <button>
+                            Book Now →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EVENT 10 -->
+
+                <div class="event-card"
+                     onclick="selectEvent('Other Events')">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1478146896981-b80fe463b330?auto=format&fit=crop&w=800&q=80"
+                        alt="Other Events"
+                    >
+
+                    <div class="event-content">
+
+                        <h3>Other Events</h3>
+
+                        <p>
+                            Have another event idea? Let EventSphere
+                            help you organize it.
+                        </p>
+
+                        <button>
+                            Book Now →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= BOOKING ================= -->
+
+        <section id="booking" class="booking-section">
+
+            <div class="booking-box">
+
+                <p class="small-title">
+                    EVENT BOOKING
+                </p>
+
+                <h2>
+                    Book Your <span id="selectedEvent">Event</span>
+                </h2>
+
+                <p>
+                    Enter the amount you want to spend on your event.
+                </p>
+
+                <label for="amount">
+                    Event Budget
+                </label>
+
+                <div class="amount-box">
+                    ₹
+                    <input
+                        type="number"
+                        id="amount"
+                        placeholder="Enter amount"
+                        min="500"
+                    >
+                </div>
+
+                <button
+                    onclick="confirmBooking()"
+                    class="confirm-button"
+                >
+                    Confirm Booking
+                </button>
+
+                <p id="bookingMessage"></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ABOUT ================= -->
+
+        <section id="about" class="about-section">
+
+            <div class="about-content">
+
+                <p class="small-title">
+                    ABOUT US
+                </p>
+
+                <h2>
+                    About <span>EventSphere</span>
+                </h2>
+
+                <p>
+                    EventSphere is an event management platform created
+                    to make event planning simple, convenient and enjoyable.
+                </p>
+
+                <p>
+                    Whether you are planning a birthday, wedding,
+                    corporate event, anniversary or private celebration,
+                    our goal is to help turn your idea into a memorable
+                    experience.
+                </p>
+
+                <div class="about-boxes">
+
+                    <div>
+                        <strong>10+</strong>
+                        <span>Event Types</span>
+                    </div>
+
+                    <div>
+                        <strong>100%</strong>
+                        <span>Customer Focus</span>
+                    </div>
+
+                    <div>
+                        <strong>24/7</strong>
+                        <span>Booking Access</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= TERMS ================= -->
+
+        <section class="terms-section">
+
+            <div class="terms-box">
+
+                <h2>Terms & Conditions</h2>
+
+                <p>
+                    1. Event bookings are considered requests until
+                    confirmed by the EventSphere management team.
+                </p>
+
+                <p>
+                    2. The amount entered during booking represents
+                    the customer's proposed event budget.
+                </p>
+
+                <p>
+                    3. Event arrangements may depend on availability,
+                    location and service requirements.
+                </p>
+
+                <p>
+                    4. Customers are responsible for providing accurate
+                    event information when requested by EventSphere.
+                </p>
+
+                <p>
+                    5. EventSphere reserves the right to modify or
+                    cancel services when circumstances require it.
+                </p>
+
+                <p>
+                    6. Final pricing and arrangements may be discussed
+                    with the customer before the event is confirmed.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer>
+
+            <div class="footer-logo">
+                <span>Event</span>Sphere
+            </div>
+
+            <p>
+                Making every celebration memorable.
+            </p>
+
+            <p class="copyright">
+                © 2026 EventSphere. All Rights Reserved.
+            </p>
+
+        </footer>
+
+    </div>
+
+
+    <script src="script.js?v=2"></script>
+
+</body>
+</html>
+```
