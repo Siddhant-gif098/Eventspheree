@@ -1,8 +1,6 @@
-```javascript
 /* =========================================================
-   EVENTSPHERE
-   FINAL JAVASCRIPT
-========================================================= */
+   EVENTSPHERE JAVASCRIPT
+   ========================================================= */
 
 let registerMode = false;
 let selectedEventName = "";
@@ -10,7 +8,7 @@ let selectedEventName = "";
 
 /* =========================================================
    START WEBSITE
-========================================================= */
+   ========================================================= */
 
 window.addEventListener("load", function () {
 
@@ -18,7 +16,7 @@ window.addEventListener("load", function () {
     const mainWebsite = document.getElementById("mainWebsite");
 
     if (!loginPage || !mainWebsite) {
-        alert("Error: Login page or main website section not found.");
+        console.error("EventSphere: Required HTML elements not found.");
         return;
     }
 
@@ -34,8 +32,8 @@ window.addEventListener("load", function () {
 
 
 /* =========================================================
-   LOGIN PAGE
-========================================================= */
+   SHOW LOGIN
+   ========================================================= */
 
 function showLogin() {
 
@@ -45,6 +43,7 @@ function showLogin() {
     const mainWebsite = document.getElementById("mainWebsite");
 
     loginPage.style.display = "flex";
+
     mainWebsite.classList.add("hidden");
 
     document.getElementById("formTitle").textContent =
@@ -66,9 +65,10 @@ function showLogin() {
         "Login";
 
     document.querySelector(".switch-text").innerHTML =
-        'Don\'t have an account? ' +
+        "Don't have an account? " +
         '<button onclick="showRegister()" class="link-button">' +
-        'Register</button>';
+        "Register" +
+        "</button>";
 
     document.getElementById("message").textContent = "";
 
@@ -76,8 +76,8 @@ function showLogin() {
 
 
 /* =========================================================
-   REGISTER PAGE
-========================================================= */
+   SHOW REGISTER
+   ========================================================= */
 
 function showRegister() {
 
@@ -102,9 +102,10 @@ function showRegister() {
         "Register";
 
     document.querySelector(".switch-text").innerHTML =
-        'Already have an account? ' +
+        "Already have an account? " +
         '<button onclick="showLogin()" class="link-button">' +
-        'Login</button>';
+        "Login" +
+        "</button>";
 
     document.getElementById("message").textContent = "";
 
@@ -112,30 +113,22 @@ function showRegister() {
 
 
 /* =========================================================
-   LOGIN / REGISTER BUTTON
-========================================================= */
+   LOGIN / REGISTER
+   ========================================================= */
 
 function loginUser() {
 
-    const usernameElement =
-        document.getElementById("username");
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
+    const message = document.getElementById("message");
 
-    const passwordElement =
-        document.getElementById("password");
-
-    const message =
-        document.getElementById("message");
-
-    if (!usernameElement || !passwordElement || !message) {
-        alert("JavaScript error: Login fields not found.");
+    if (!usernameInput || !passwordInput || !message) {
+        alert("Login elements are missing.");
         return;
     }
 
-    const username =
-        usernameElement.value.trim();
-
-    const password =
-        passwordElement.value.trim();
+    const username = usernameInput.value.trim();
+    const password = passwordInput.value.trim();
 
 
     /* EMPTY CHECK */
@@ -153,9 +146,9 @@ function loginUser() {
 
     /* =====================================================
        REGISTER
-    ===================================================== */
+       ===================================================== */
 
-    if (registerMode === true) {
+    if (registerMode) {
 
         const user = {
             name: username,
@@ -174,9 +167,7 @@ function loginUser() {
 
 
         setTimeout(function () {
-
             showMainWebsite();
-
         }, 500);
 
         return;
@@ -185,11 +176,10 @@ function loginUser() {
 
     /* =====================================================
        LOGIN
-    ===================================================== */
+       ===================================================== */
 
     const savedUser =
         localStorage.getItem("eventSphereUser");
-
 
     if (!savedUser) {
 
@@ -213,7 +203,7 @@ function loginUser() {
         localStorage.removeItem("eventSphereUser");
 
         message.textContent =
-            "Account data was damaged. Please register again.";
+            "Account data is invalid. Please register again.";
 
         message.style.color = "#ff5555";
 
@@ -233,9 +223,7 @@ function loginUser() {
 
 
         setTimeout(function () {
-
             showMainWebsite();
-
         }, 500);
 
     } else {
@@ -251,7 +239,7 @@ function loginUser() {
 
 /* =========================================================
    OPEN MAIN WEBSITE
-========================================================= */
+   ========================================================= */
 
 function showMainWebsite() {
 
@@ -261,7 +249,6 @@ function showMainWebsite() {
     const mainWebsite =
         document.getElementById("mainWebsite");
 
-
     if (!loginPage || !mainWebsite) {
 
         alert("Error opening EventSphere website.");
@@ -269,28 +256,22 @@ function showMainWebsite() {
         return;
     }
 
-
     loginPage.style.display = "none";
 
     mainWebsite.classList.remove("hidden");
 
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+    window.scrollTo(0, 0);
 
 }
 
 
 /* =========================================================
-   EVENT SELECTION
-========================================================= */
+   SELECT EVENT
+   ========================================================= */
 
 function selectEvent(eventName) {
 
     selectedEventName = eventName;
-
 
     const selectedEvent =
         document.getElementById("selectedEvent");
@@ -333,7 +314,7 @@ function selectEvent(eventName) {
 
 /* =========================================================
    CONFIRM BOOKING
-========================================================= */
+   ========================================================= */
 
 function confirmBooking() {
 
@@ -419,10 +400,16 @@ function confirmBooking() {
 
     try {
 
-        bookings =
-            JSON.parse(
-                localStorage.getItem("eventSphereBookings")
-            ) || [];
+        const oldBookings =
+            localStorage.getItem("eventSphereBookings");
+
+        if (oldBookings) {
+            bookings = JSON.parse(oldBookings);
+        }
+
+        if (!Array.isArray(bookings)) {
+            bookings = [];
+        }
 
     } catch (error) {
 
@@ -449,9 +436,7 @@ function confirmBooking() {
         "Booking ID: " +
         booking.id;
 
-
     bookingMessage.style.color = "#55dd88";
-
 
     amountInput.value = "";
 
@@ -460,7 +445,7 @@ function confirmBooking() {
 
 /* =========================================================
    LOGOUT
-========================================================= */
+   ========================================================= */
 
 function logoutUser() {
 
@@ -474,8 +459,8 @@ function logoutUser() {
 
 
 /* =========================================================
-   ENTER KEY SUPPORT
-========================================================= */
+   ENTER KEY
+   ========================================================= */
 
 document.addEventListener("keydown", function (event) {
 
@@ -483,16 +468,14 @@ document.addEventListener("keydown", function (event) {
         return;
     }
 
-
-    const active =
+    const activeElement =
         document.activeElement;
 
-
     if (
-        active &&
+        activeElement &&
         (
-            active.id === "username" ||
-            active.id === "password"
+            activeElement.id === "username" ||
+            activeElement.id === "password"
         )
     ) {
 
@@ -501,4 +484,3 @@ document.addEventListener("keydown", function (event) {
     }
 
 });
-```
